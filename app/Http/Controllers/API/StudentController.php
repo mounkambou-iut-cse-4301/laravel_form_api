@@ -29,4 +29,27 @@ class StudentController extends Controller
            'message'=>'Student Added Successfully', 
        ]);
     }
+
+    public function edit($id){
+        $student= Student::find($id);
+        return response()->json([
+            'status'=>200, 
+            'student'=>$student, 
+        ]);
+    }
+
+
+    public function update(Request $req, $id){
+        $student= Student::find($id);
+        $student->name=$req->input('name');
+        $student->course=$req->input('course');
+        $student->email=$req->input('email');
+        $student->phone=$req->input('phone');
+        $student->update();
+ 
+        return response()->json([
+            'status'=>200, 
+            'message'=>'Student Updated Successfully', 
+        ]);
+    }
 }
