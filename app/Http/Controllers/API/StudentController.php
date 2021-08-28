@@ -52,4 +52,13 @@ class StudentController extends Controller
             'message'=>'Student Updated Successfully', 
         ]);
     }
+
+    public function delete($id){
+        $student= Student::find($id);
+        $student->delete();
+        return response()->json([
+            'status'=>200, 
+            'message'=>'Student Deleted Successfully', 
+        ]);
+    }
 }
